@@ -52,7 +52,7 @@ Note that you can still use the repository even with the warning above, but some
 Model checkpoints can be downloaded by running:
 ```bash
 cd checkpoints && \
-./download_ckpts.sh 
+./download_ckpts.bat 
 ```
 
 Our model configs are available in `sam2/` folder. 
@@ -73,12 +73,12 @@ CUDA_VISIBLE_DEVICES=0 python run_bbox_example.py --dir <frames-dir> --ext <fram
 
 Run on a single sequence and visualize results:
 ```bash
-CUDA_VISIBLE_DEVICES=0 python run_on_didi.py --dataset_path <path-to-didi> --sequence <sequence-name>
+python run_on_didi.py --dataset_path <path-to-didi> --sequence <sequence-name>
 ```
 
 Run on the whole dataset and save results to disk:
 ```bash
-CUDA_VISIBLE_DEVICES=0 python run_on_didi.py --dataset_path <path-to-didi> --output_dir <output-dir-path>
+python run_on_didi.py --dataset_path <path-to-didi> --output_dir <output-dir-path>
 ```
 
 After obtaining the raw results on DiDi using previous command, you can compute performance measures. This is done using the VOT toolkit. We thus provide the empty vot workspace in the `didi-workspace` directory. The sequences from DiDi dataset should be placed into the `didi-workspace/sequences` directory. Alternatively, you can just create a symbolic link named `sequences` in the `didi-workspace`, pointed to the DiDi dataset on your disk. The raw results must be placed in the `results` subfolder, e.g. `didi-workspace/results/DAM4SAM`. If the results were obtained using `run_on_didi.py` you should move them to the workspace using the following command:
